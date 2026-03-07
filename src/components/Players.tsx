@@ -38,13 +38,33 @@ export default function Players() {
 
   const fetchPlayers = async () => {
     try {
-      const response = await fetch('/api/players');
+      // Try the API first
+      let response = await fetch('/api/players');
+
+      // If API fails or is not available (e.g. static deployment), try the static JSON file
+      if (!response.ok) {
+        console.log('API not available, falling back to static players.json');
+        response = await fetch('/players.json');
+      }
+
       if (response.ok) {
         const data = await response.json();
         setPlayers(data);
+      } else {
+        throw new Error('Failed to fetch from both API and static fallback');
       }
     } catch (error) {
       console.error('Failed to fetch players:', error);
+      // Final attempt: try static JSON directly in case of network error during API call
+      try {
+        const staticResponse = await fetch('/players.json');
+        if (staticResponse.ok) {
+          const staticData = await staticResponse.json();
+          setPlayers(staticData);
+        }
+      } catch (staticError) {
+        console.error('Static fallback also failed:', staticError);
+      }
     } finally {
       setIsLoading(false);
     }
