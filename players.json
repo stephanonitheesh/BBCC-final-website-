@@ -1,0 +1,230 @@
+[
+  {
+    "id": "1",
+    "name": "Rijo ",
+    "image": "/uploads/PHOTO-2025-09-04-15-05-30.jpg",
+    "role": "Batsman",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "",
+      "technique": 93,
+      "power": 0,
+      "consistency": 9
+    }
+  },
+  {
+    "id": "2",
+    "name": "Nitheesh ",
+    "image": "/uploads/PHOTO-2025-09-04-17-36-42 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "N/A",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "3",
+    "name": "Vinu",
+    "image": "/uploads/PHOTO-2025-09-04-17-07-18 3.59.33 pm.jpg",
+    "role": "Batsman",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "",
+      "technique": 8,
+      "power": 7,
+      "consistency": 9
+    }
+  },
+  {
+    "id": "4",
+    "name": "Bibin ",
+    "image": "/uploads/PHOTO-2025-09-04-17-51-10 3.59.33 pm.jpg",
+    "role": "Bowler",
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Right-arm fast ",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "N/A",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "5",
+    "name": "Joshan ",
+    "image": "/uploads/PHOTO-2025-09-04-17-23-24 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "6",
+    "name": "Suroop ",
+    "image": "/uploads/PHOTO-2025-09-04-17-41-51 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "7",
+    "name": "Jenson ",
+    "image": "/uploads/PHOTO-2025-09-04-17-12-59 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "8",
+    "name": "Suraj ",
+    "image": "/uploads/PHOTO-2025-09-04-18-02-36 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "9",
+    "name": "Shinto ",
+    "image": "/uploads/PHOTO-2025-09-04-17-50-48 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Left-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "10",
+    "name": "Vimal ",
+    "image": "/uploads/PHOTO-2025-09-04-17-30-27 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm fast",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "11",
+    "name": "Sahil ",
+    "image": "/uploads/PHOTO-2025-09-04-18-16-51 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  },
+  {
+    "id": "12",
+    "name": "Eldho ",
+    "image": "/uploads/PHOTO-2025-09-04-18-16-55 3.59.33 pm.jpg",
+    "role": "All-rounder",
+    "battingStyle": "Right-hand bat",
+    "bowlingStyle": "Right-arm medium",
+    "bio": "",
+    "stats": {
+      "matches": 0,
+      "runs": 0,
+      "wickets": 0,
+      "highestScore": 0,
+      "bestBowling": "0/0",
+      "technique": 85,
+      "power": 78,
+      "consistency": 92
+    }
+  }
+]
