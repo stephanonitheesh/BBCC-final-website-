@@ -306,7 +306,7 @@ app.post("/api/membership/submit", async (req, res) => {
       contentType: 'application/pdf'
     });
   } catch (pdfError) {
-    console.error("Error generating PDF attachmment:", pdfError);
+    console.error("Error generating PDF attachment:", pdfError);
   }
 
   try {
