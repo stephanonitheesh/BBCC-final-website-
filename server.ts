@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import cors from "cors";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import PDFDocument from "pdfkit";
 
 dotenv.config();
 
@@ -130,6 +131,106 @@ app.post("/api/players/update", (req, res) => {
   }
 });
 
+function generateMembershipPDF(formData: any): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    try {
+      const doc = new PDFDocument({ margin: 50 });
+      const buffers: Buffer[] = [];
+      doc.on("data", buffers.push.bind(buffers));
+      doc.on("end", () => {
+        resolve(Buffer.concat(buffers));
+      });
+
+      // Content
+      doc.fontSize(20).text("Membership Application Form", { align: "center" });
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 1: Personal Details", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Full Name: ${formData.fullName}`);
+      doc.text(`Date of Birth: ${formData.dob}`);
+      doc.text(`Home Address: ${formData.address}`);
+      doc.text(`Postcode: ${formData.postcode}`);
+      doc.text(`Email Address: ${formData.email}`);
+      doc.text(`Mobile No.: ${formData.mobile}`);
+      doc.text(`Occupation: ${formData.occupation}`);
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 2: Cricket Experience", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Played Before: ${formData.playedBefore}`);
+      doc.text(`Club: ${formData.club}`);
+      doc.text(`County: ${formData.county}`);
+      doc.text(`Other Experience: ${formData.otherExperience}`);
+      doc.text(`Primary Role: ${formData.cricketRole}`);
+      doc.text(`Qualifications: ${formData.qualifications}`);
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 3: Emergency Contact", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Contact Name: ${formData.emergencyContactName}`);
+      doc.text(`Relationship: ${formData.emergencyRelationship}`);
+      doc.text(`Phone Number: ${formData.emergencyPhone}`);
+      doc.text(`Alt Phone: ${formData.emergencyAltPhone}`);
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 4: Medical Info", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Medical Info: ${formData.medicalInfo}`);
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 5, 6 & 7: Consents", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Photography Consent: ${formData.photoConsent}`);
+      doc.text(`Social Media Consent: ${formData.socialConsent}`);
+      doc.moveDown();
+
+      doc.fontSize(14).text("Section 8: Declaration", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(`Electronic Signature: ${formData.signature}`);
+      doc.text(`Date: ${new Date().toLocaleDateString()}`);
+
+      doc.end();
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
+function generateContactPDF(formData: any): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    try {
+      const doc = new PDFDocument({ margin: 50 });
+      const buffers: Buffer[] = [];
+      doc.on("data", buffers.push.bind(buffers));
+      doc.on("end", () => {
+        resolve(Buffer.concat(buffers));
+      });
+
+      // Content
+      doc.fontSize(20).text("Contact Message", { align: "center" });
+      doc.moveDown();
+
+      doc.fontSize(12);
+      doc.text(`From: ${formData.fullName}`);
+      doc.text(`Email: ${formData.email}`);
+      doc.text(`Subject: ${formData.subject}`);
+      doc.moveDown();
+      
+      doc.fontSize(14).text("Message:", { underline: true });
+      doc.fontSize(12).moveDown(0.5);
+      doc.text(formData.message);
+      doc.moveDown();
+
+      doc.text(`Date: ${new Date().toLocaleString()}`);
+
+      doc.end();
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
 app.post("/api/membership/submit", async (req, res) => {
   const formData = req.body;
   console.log("New Membership Application Received:", formData);
@@ -191,7 +292,19 @@ app.post("/api/membership/submit", async (req, res) => {
       Electronic Signature: ${formData.signature}
       Date: ${new Date().toLocaleDateString()}
     `,
+    attachments: [],
   };
+
+  try {
+    const pdfBuffer = await generateMembershipPDF(formData);
+    mailOptions.attachments.push({
+      filename: `${formData.fullName ? formData.fullName.replace(/\s+/g, '_') : 'Applicant'}_Membership_Application.pdf`,
+      content: pdfBuffer,
+      contentType: 'application/pdf'
+    });
+  } catch (pdfError) {
+    console.error("Error generating PDF attachmment:", pdfError);
+  }
 
   try {
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
@@ -237,7 +350,19 @@ app.post("/api/contact/submit", async (req, res) => {
       
       Date: ${new Date().toLocaleString()}
     `,
+    attachments: [],
   };
+
+  try {
+    const pdfBuffer = await generateContactPDF(formData);
+    mailOptions.attachments.push({
+      filename: `Contact_${formData.fullName ? formData.fullName.replace(/\s+/g, '_') : 'Message'}.pdf`,
+      content: pdfBuffer,
+      contentType: 'application/pdf'
+    });
+  } catch (pdfError) {
+    console.error("Error generating contact PDF attachment:", pdfError);
+  }
 
   try {
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
