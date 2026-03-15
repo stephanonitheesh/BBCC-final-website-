@@ -314,7 +314,7 @@ app.post("/api/membership/submit", async (req, res) => {
       // Use Resend
       const { data, error } = await resend.emails.send({
         from: 'BBCC Website <onboarding@resend.dev>', // You can change this once you verify your domain
-        to: ['bbccswindon@gmail.com'],
+        to: ['stephanonitheesh@gmail.com'], // Using account owner email for free tier testing
         subject: `New Membership Application: ${formData.fullName}`,
         text: mailOptions.text,
         attachments: mailOptions.attachments.map(att => ({
@@ -391,7 +391,7 @@ app.post("/api/contact/submit", async (req, res) => {
       // Use Resend
       const { data, error } = await resend.emails.send({
         from: 'BBCC Website <onboarding@resend.dev>',
-        to: ['bbccswindon@gmail.com'],
+        to: ['stephanonitheesh@gmail.com'], // Using account owner email for free tier testing
         subject: `New Contact Message: ${formData.subject}`,
         text: mailOptions.text,
         attachments: mailOptions.attachments.map(att => ({
