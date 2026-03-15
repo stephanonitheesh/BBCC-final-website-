@@ -8,6 +8,7 @@ import cors from "cors";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import PDFDocument from "pdfkit";
+import { Resend } from "resend";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 console.log("Starting server...");
 
@@ -308,16 +310,34 @@ app.post("/api/membership/submit", async (req, res) => {
   }
 
   try {
-    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (resend) {
+      // Use Resend
+      const { data, error } = await resend.emails.send({
+        from: 'BBCC Website <onboarding@resend.dev>', // You can change this once you verify your domain
+        to: ['bbccswindon@gmail.com'],
+        subject: `New Membership Application: ${formData.fullName}`,
+        text: mailOptions.text,
+        attachments: mailOptions.attachments.map(att => ({
+          filename: att.filename,
+          content: att.content
+        }))
+      });
+
+      if (error) {
+        console.error("Resend error (membership):", error);
+        throw error;
+      }
+      console.log("Email sent successfully via Resend");
+    } else if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+      // Fallback to Nodemailer
       await transporter.sendMail(mailOptions);
-      console.log("Email sent successfully");
+      console.log("Email sent successfully via SMTP");
     } else {
-      console.warn("SMTP credentials not provided. Email not sent, but application logged.");
+      console.warn("No email service configured (Resend or SMTP).");
     }
     res.status(200).json({ message: "Application received successfully" });
   } catch (error) {
     console.error("Error sending email:", error);
-    // Still return 200 to the user if the data was logged, or 500 if you want to be strict
     res.status(200).json({ message: "Application received, but email notification failed." });
   }
 });
@@ -367,11 +387,30 @@ app.post("/api/contact/submit", async (req, res) => {
   }
 
   try {
-    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    if (resend) {
+      // Use Resend
+      const { data, error } = await resend.emails.send({
+        from: 'BBCC Website <onboarding@resend.dev>',
+        to: ['bbccswindon@gmail.com'],
+        subject: `New Contact Message: ${formData.subject}`,
+        text: mailOptions.text,
+        attachments: mailOptions.attachments.map(att => ({
+          filename: att.filename,
+          content: att.content
+        }))
+      });
+
+      if (error) {
+        console.error("Resend error (contact):", error);
+        throw error;
+      }
+      console.log("Contact email sent successfully via Resend");
+    } else if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+      // Fallback to Nodemailer
       await transporter.sendMail(mailOptions);
-      console.log("Contact email sent successfully");
+      console.log("Contact email sent successfully via SMTP");
     } else {
-      console.warn("SMTP credentials not provided. Contact email not sent.");
+      console.warn("No email service configured (Resend or SMTP).");
     }
     res.status(200).json({ message: "Message received successfully" });
   } catch (error) {
