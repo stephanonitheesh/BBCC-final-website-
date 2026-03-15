@@ -297,6 +297,7 @@ app.post("/api/membership/submit", async (req, res) => {
 
   try {
     const pdfBuffer = await generateMembershipPDF(formData);
+    console.log(`Successfully generated Membership PDF for ${formData.fullName}. Buffer size: ${pdfBuffer.length} bytes.`);
     mailOptions.attachments.push({
       filename: `${formData.fullName ? formData.fullName.replace(/\s+/g, '_') : 'Applicant'}_Membership_Application.pdf`,
       content: pdfBuffer,
@@ -355,6 +356,7 @@ app.post("/api/contact/submit", async (req, res) => {
 
   try {
     const pdfBuffer = await generateContactPDF(formData);
+    console.log(`Successfully generated Contact PDF from ${formData.fullName}. Buffer size: ${pdfBuffer.length} bytes.`);
     mailOptions.attachments.push({
       filename: `Contact_${formData.fullName ? formData.fullName.replace(/\s+/g, '_') : 'Message'}.pdf`,
       content: pdfBuffer,
