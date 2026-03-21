@@ -105,7 +105,7 @@ export default function Players() {
   };
 
   return (
-    <section id="players" className="py-24 bg-white">
+    <section id="players" className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
           <div className="text-center md:text-left">
@@ -122,20 +122,13 @@ export default function Players() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-display font-bold text-primary leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl font-display font-bold text-primary leading-tight"
             >
               MEET OUR <span className="text-secondary italic">CHAMPIONS</span>
             </motion.h2>
           </div>
 
-          <button
-            onClick={() => setIsEditMode(!isEditMode)}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${isEditMode ? 'bg-primary text-white' : 'bg-gray-100 text-primary hover:bg-gray-200'
-              }`}
-          >
-            {isEditMode ? <Save className="w-4 h-4" /> : <Edit2 className="w-4 h-4" />}
-            <span>{isEditMode ? 'FINISH EDITING' : 'EDIT SQUAD'}</span>
-          </button>
+
         </div>
 
         {isLoading ? (
@@ -143,7 +136,7 @@ export default function Players() {
             <Loader2 className="w-10 h-10 text-secondary animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
             {players.map((player, index) => (
               <motion.div
                 key={player.id}
@@ -163,10 +156,10 @@ export default function Players() {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                    <p className="text-secondary font-bold text-xs tracking-widest uppercase mb-1">
+                    <p className="text-secondary font-bold text-[10px] tracking-widest uppercase mb-1">
                       {player.role}
                     </p>
-                    <h3 className="text-2xl font-display font-bold mb-2">
+                    <h3 className="text-lg sm:text-2xl font-display font-bold mb-2">
                       {player.name}
                     </h3>
                     <div className="flex items-center gap-4 text-xs font-medium text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity delay-100">

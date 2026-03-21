@@ -1,12 +1,21 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import { CLUB_NAME } from '../constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <footer id="footer" className="bg-primary pt-24 pb-12 border-t border-white/5">
+    <footer id="footer" className="bg-primary pt-16 pb-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-3 gap-16 mb-20">
           <div className="col-span-2">
@@ -82,7 +91,11 @@ export default function Footer() {
                       {link.name}
                     </a>
                   ) : (
-                    <Link to={link.href} className="text-gray-400 hover:text-secondary flex items-center gap-2 group transition-colors">
+                    <Link 
+                      to={link.href} 
+                      onClick={link.href === '/' ? handleHomeClick : undefined}
+                      className="text-gray-400 hover:text-secondary flex items-center gap-2 group transition-colors"
+                    >
                       <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all -ml-6 group-hover:ml-0" />
                       {link.name}
                     </Link>
@@ -97,7 +110,7 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             © {currentYear} BONDED BROTHERS CRICKET CLUB. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-8 text-gray-500 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-gray-500 text-xs sm:text-sm">
             <Link to="/privacy-policy" className="hover:text-secondary transition-colors">PRIVACY POLICY</Link>
             <Link to="/terms-of-service" className="hover:text-secondary transition-colors">TERMS OF SERVICE</Link>
             <Link to="/cookie-policy" className="hover:text-secondary transition-colors">COOKIE POLICY</Link>

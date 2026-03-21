@@ -57,7 +57,6 @@ export default function Navbar() {
     { name: 'Matches', href: '/#matches' },
     { name: 'Squad', href: '/#players' },
     { name: 'Gallery', href: '/#gallery', icon: <Instagram className="w-3.5 h-3.5" /> },
-    { name: 'Membership', href: '/membership' },
   ];
 
   const isActive = (path: string) => {
@@ -67,6 +66,14 @@ export default function Navbar() {
       return location.pathname === '/' && activeSection === sectionId;
     }
     return location.pathname === path;
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -82,6 +89,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link
             to="/"
+            onClick={handleHomeClick}
             className="flex items-center gap-3 group"
             aria-label={`${CLUB_NAME} Home`}
           >
@@ -111,6 +119,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     to={link.href}
+                    onClick={link.href === '/' ? handleHomeClick : undefined}
                     className={`px-4 py-2 text-sm font-medium transition-all rounded-full flex items-center gap-2 ${active
                       ? 'text-secondary bg-white/10'
                       : 'text-gray-300 hover:text-secondary hover:bg-white/5'
@@ -176,11 +185,11 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     to={link.href}
+                    onClick={link.href === '/' ? handleHomeClick : () => setIsOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 text-base font-medium rounded-xl transition-all ${active
                       ? 'text-secondary bg-white/10'
                       : 'text-gray-300 hover:text-secondary hover:bg-white/5'
                       }`}
-                    onClick={() => setIsOpen(false)}
                   >
                     {link.icon && link.icon}
                     {link.name}

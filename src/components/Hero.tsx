@@ -7,7 +7,7 @@ export default function Hero() {
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="relative py-20 md:py-32 flex items-center overflow-hidden bg-primary">
+    <div className="relative py-16 md:py-32 flex items-center overflow-hidden bg-primary">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -33,7 +33,7 @@ export default function Hero() {
                 },
               }}
             >
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tighter mb-8 text-balance">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white leading-[0.9] tracking-tighter mb-8 text-balance">
                 {["BONDED", "BY", "CRICKET,", "BROTHERS", "BY", "CHOICE"].map((word, i) => (
                   <motion.span
                     key={i}
@@ -61,7 +61,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-xl font-light tracking-wide text-justify"
+              className="text-lg md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-xl font-light tracking-wide text-justify"
             >
               Join the premier cricket community where passion meets performance.
               From local leagues to professional training, we define excellence on and off the field.
@@ -71,23 +71,23 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-wrap gap-5"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-5"
             >
-              <Link to="/membership" className="group bg-secondary text-primary px-10 py-5 rounded-full font-bold flex items-center gap-3 hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-secondary/20">
-                EXPLORE CLUB
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button
-                onClick={() => {
-                  videoContainerRef.current?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="group bg-white/5 backdrop-blur-xl text-white border border-white/10 px-10 py-5 rounded-full font-bold flex items-center gap-4 hover:bg-white/10 transition-all"
-              >
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play className="w-5 h-5 text-primary fill-current" />
-                </div>
-                WATCH HIGHLIGHTS
-              </button>
+                <a href="/#about" className="group bg-secondary text-primary px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white transition-all transform hover:scale-105 shadow-lg shadow-secondary/20">
+                  EXPLORE CLUB
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <button
+                  onClick={() => {
+                    videoContainerRef.current?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="group bg-white/5 backdrop-blur-xl text-white border border-white/10 px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold flex items-center justify-center gap-4 hover:bg-white/10 transition-all"
+                >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-4 h-4 sm:w-5 sm:h-5 text-primary fill-current" />
+                  </div>
+                  WATCH HIGHLIGHTS
+                </button>
             </motion.div>
           </div>
 

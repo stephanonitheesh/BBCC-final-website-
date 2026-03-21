@@ -2,12 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
-import Stats from './components/Stats';
 import About from './components/About';
 import Matches from './components/Matches';
 import Players from './components/Players';
 import Gallery from './components/Gallery';
-import MembershipForm from './components/MembershipForm';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -20,7 +18,6 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
       <About />
       <Matches />
       <Players />
@@ -50,7 +47,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/player/:id" element={<PlayerProfile />} />
-            <Route path="/membership" element={<MembershipForm />} />
             <Route path="/contact" element={<ContactForm />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

@@ -22,7 +22,7 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">2. Information We Collect</h2>
               <p>We may collect several types of information from and about users of our website, including:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Personal Identification Information:</strong> Name, email address, phone number, and address when you fill out membership or contact forms.</li>
+                <li><strong>Personal Identification Information:</strong> Name, email address, phone number, and address when you fill out contact forms.</li>
                 <li><strong>Usage Data:</strong> Information about how you use our website, products, and services.</li>
                 <li><strong>Technical Data:</strong> IP address, browser type and version, time zone setting, and location.</li>
               </ul>
@@ -32,7 +32,6 @@ export default function PrivacyPolicy() {
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">3. How We Use Your Information</h2>
               <p>We use the information we collect to:</p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>Process your membership applications.</li>
                 <li>Respond to your inquiries and provide support.</li>
                 <li>Send you updates about club activities, matches, and events.</li>
                 <li>Improve our website and user experience.</li>

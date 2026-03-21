@@ -50,13 +50,13 @@ export default function Matches() {
   ];
 
   return (
-    <section id="matches" className="py-24 bg-gray-50">
+    <section id="matches" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">
             MATCH CENTER
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary mb-4 leading-tight">
             RECENT <span className="text-secondary italic">FIXTURES & RESULTS</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -80,23 +80,23 @@ export default function Matches() {
               </div>
 
               <div className="p-8">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="text-center flex-1">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-white flex items-center justify-center overflow-hidden border-2 border-primary/10 shadow-md">
+                <div className="flex items-center justify-between mb-8 gap-2">
+                  <div className="text-center flex-1 min-w-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 rounded-full bg-white flex items-center justify-center overflow-hidden border-2 border-primary/10 shadow-md">
                       <img src="/bbcc-logo-official.jpg" alt="Bonded Brothers CC" className="w-full h-full object-contain p-1" />
                     </div>
-                    <p className="font-bold text-primary text-sm">BBCC</p>
+                    <p className="font-bold text-primary text-[10px] sm:text-sm truncate uppercase">BBCC</p>
                   </div>
 
-                  <div className="px-4">
-                    <span className="text-2xl font-display font-bold text-gray-300 italic">VS</span>
+                  <div className="flex-shrink-0">
+                    <span className="text-xl sm:text-2xl font-display font-bold text-gray-300 italic px-2">VS</span>
                   </div>
 
-                  <div className="text-center flex-1">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center p-2 overflow-hidden">
+                  <div className="text-center flex-1 min-w-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center p-2 overflow-hidden">
                       <img src={match.logo} alt={match.opponent} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     </div>
-                    <p className="font-bold text-primary text-sm uppercase">{match.opponent}</p>
+                    <p className="font-bold text-primary text-[10px] sm:text-sm uppercase truncate">{match.opponent}</p>
                   </div>
                 </div>
 

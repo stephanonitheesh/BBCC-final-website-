@@ -12,7 +12,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
+    <section id="about" className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -47,7 +47,7 @@ export default function About() {
             <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">
               OUR STORY
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-primary mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary mb-8 leading-tight">
               BONDED BROTHERS <span className="text-secondary italic">CRICKET CLUB</span>
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed text-justify">

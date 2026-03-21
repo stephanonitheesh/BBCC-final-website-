@@ -322,16 +322,10 @@ export default function PlayerProfile() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              to="/membership" 
+              to="/contact" 
               className="bg-secondary text-primary px-10 py-5 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105 shadow-2xl"
             >
-              JOIN THE SQUAD
-            </Link>
-            <Link 
-              to="/contact" 
-              className="bg-white/10 backdrop-blur-md text-white px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all"
-            >
-              CONTACT CLUB
+              CONTACT US TO JOIN
             </Link>
           </div>
         </div>
